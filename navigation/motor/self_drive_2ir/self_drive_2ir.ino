@@ -15,6 +15,7 @@ int redPin = 3;
 int greenPin = 5;
 int bluePin = 6;
 #define COMMON_ANODE
+bool startingup = true;
 
 char cmd = 's';
 
@@ -191,6 +192,12 @@ void setColor(int red, int green, int blue)
 
 void loop()
 {
+  if (startingup == true)
+  {
+    startingup = false;
+    dance();
+  }
+  
   while (Serial.available() > 0)
   {
   cmd = Serial.read();
